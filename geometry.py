@@ -10,8 +10,12 @@ http://shashi.biz/ijulia-notebooks/funcgeo/
 """
 from svg import Node
 import math
+import os
 
-FISH = Node("path", d=open("fish.path").read().strip(), style="fill: black;")
+root = os.path.dirname(__file__)
+
+
+FISH = Node("path", d=open(root + "/fish.path").read().strip(), style="fill: black;")
 
 def transform(shape, t):
     g = Node("g", transform=t)

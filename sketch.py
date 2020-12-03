@@ -1,5 +1,6 @@
 from svg import SVG, Node
 import geometry as g
+import os.path
 
 class Sketch:
     def __init__(self, width=600, height=600):
@@ -18,8 +19,8 @@ class Sketch:
     def circle(self, x, y, d):
         self.svg.circle(cx=x, cy=y, r=d/2)
 
-    def line(self, x1, y1, x2, y2):
-        self.svg.line(x1=x1, y1=y1, x2=x2, y2=y2)
+    def line(self, x1, y1, x2, y2, **kwargs):
+        self.svg.line(x1=x1, y1=y1, x2=x2, y2=y2, **kwargs)
 
     def rect(self, x, y, w, h):
         self.svg.rect(x=x, y=y, width=w, height=h)
@@ -44,6 +45,15 @@ class Sketch:
         exec(code, g, g)
         return self.tostring()
 
+
+    def show_grid(self):
+        size = 100
+        for y in range(0, self.height+1, size):
+            self.line(0, y, self.width, y, stroke="#ccc")
+
+        for x in range(0, self.width+1, size):
+            self.line(x, 0, x, self.height, stroke="#ccc")
+
     def get_globals(self):
         return {
             "circle": self.circle,
@@ -52,6 +62,7 @@ class Sketch:
             "path": self.path,
             "width": self.width,
             "height": self.height,
+            "show_grid": self.show_grid,
 
             "Node": Node,
             "show": self.show,
@@ -59,10 +70,13 @@ class Sketch:
             **g.exports
         }
 
-if __name__ == "__main__":
+def main():
+    import sys
+    filenames = sys.argv[1:]
+    code = "\n".join(open(f).read() for f in filenames)
     s = Sketch()
-    code = """
-circle(200, 200, 100)
-    """
     s.render(code)
     print(s.tostring())
+
+if __name__ == "__main__":
+    main()
