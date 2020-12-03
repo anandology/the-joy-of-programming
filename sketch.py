@@ -5,7 +5,7 @@ class Sketch:
     def __init__(self, width=600, height=600):
         self.width = width
         self.height = height
-        self.svg = SVG(width=width+1, height=height+1, style="stroke: black; fill: none;")
+        self.svg = SVG(viewBox=f"0 0 {width} {height}", style="stroke: black; fill: none;")
         self.background("white")
 
     def background(self, color):
@@ -27,8 +27,14 @@ class Sketch:
     def path(self, d):
         self.svg.path(d=d, stroke="black")
 
-    def show(self, node):
-        self.svg.add_node(node)
+    def show(self, node, margin=0, scale=False, size=260):
+        if margin or scale:
+            s = (self.width-2*margin)/size if scale else 1
+            g = Node("g", transform=f"translate({margin}, {margin}) scale({s}, {s})")
+            g.add_node(node)
+            self.svg.add_node(g)
+        else:
+            self.svg.add_node(node)
 
     def tostring(self):
         return self.svg.tostring()
@@ -50,9 +56,7 @@ class Sketch:
             "Node": Node,
             "show": self.show,
 
-            "over": g.over,
-            "rot": g.rot,
-            "fish": g.FISH
+            **g.exports
         }
 
 if __name__ == "__main__":
