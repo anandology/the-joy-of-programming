@@ -16,6 +16,7 @@
     <script src="/static/codemirror/keymap/sublime.js"></script>
 
     <script src="/static/codemirror/addon/edit/matchbrackets.js"></script>
+    <script src="/static/codemirror/addon/comment/comment.js"></script>
 
     <title>The Joy of Programming!</title>
   </head>
@@ -83,8 +84,8 @@
       document.getElementById("code"), {
       lineNumbers: true,
       mode: "python",
-      keyMap: "sublime"
-//      matchBrackets: true
+      keyMap: "sublime",
+      matchBrackets: true
     });
     </script>
   </body>

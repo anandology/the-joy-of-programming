@@ -19,17 +19,32 @@ div.heading {
 
 div#code-box {
     margin: 5px;
+    min-height: 800px;
+    max-height: 800px;
 }
 
-textarea {
+/* textarea {
     width: 100%;
     min-height: 600px;
     padding: 5px;
     font-size: 1.2em;
     font-family: 'Monaco', 'Courier New', Courier, monospace;
-}
+} */
 
 svg {
     margin: 10px;
     border: 1px solid #ddd;
+}
+
+.CodeMirror {
+    border: 1px solid #eee;
+    height: auto;
+    font-size: 2em;
+}
+.CodeMirror-scroll {
+    max-height: 800px;
+}
+.CodeMirror pre {
+    padding-left: 7px;
+    line-height: 1.25;
 }
