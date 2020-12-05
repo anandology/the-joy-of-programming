@@ -64,53 +64,6 @@ concentric_circles(300, 300, 300, 10)
 
 ---
 
-# [fit] Three Circles Touching at the Bottom
-
-
-![right fit](../images/three-bottom-circles.png)
-
-```
-def circle_with_bottom(x, y, d):
-    cx = x
-    cy = y-d/2
-    circle(cx, cy, d)
-
-
-circle_with_bottom(300, 400, 100)
-circle_with_bottom(300, 400, 200)
-circle_with_bottom(300, 400, 300)
-```
-
----
-
-# [fit] Three Circles Touching at the Bottom
-
-
-![right fit](../images/three-bottom-circles-fn.png)
-
-```
-def bottom_touching_circles(x, y, d, n):
-    delta = d/n
-    for i in range(1, n+1):
-        circle_with_bottom(x, y, i*delta)
-
-bottom_touching_circles(300, 400, 300, 3)
-```
-
----
-
-# [fit] Ten Circles Touching at the Bottom
-
-
-![right fit](../images/bottom-circles-10.png)
-
-```
-bottom_touching_circles(300, 400, 300, 10)
-```
-
-
----
-
 # Circles in a Grid
 
 ![right fit](../images/circles-in-grid.png)
@@ -199,45 +152,6 @@ grid(
 
 ---
 
-# [fit] Touching Circles in a Grid
-
-![right fit](../images/grid-bottom-circles-3-4.png)
-
-```
-def growing(
-        x, y, d, shape, n,
-        xoffset=0, yoffset=0):
-    delta = d/n
-    x += xoffset * d
-    y += yoffset * d
-    for i in range(1, n+1):
-        shape(x, y, i*delta)
-
-bottom_touching_circles = partial(
-    growing,
-    shape=circle_with_bottom,
-    yoffset=0.5,
-    n=3)
-
-grid(bottom_touching_circles, 4)
-```
-
----
-# [fit] Touching Circles in a Grid
-
-![right fit](../images/grid-bottom-circles-5-8.png)
-
-```
-bottom_touching_circles = partial(
-    growing,
-    shape=circle_with_bottom,
-    yoffset=0.5,
-    n=5)
-
-grid(bottom_touching_circles, 8)
-```
----
-
 # Randomness
 
 ---
@@ -284,46 +198,6 @@ grid(
     n=16),
   4)
 ```
-
----
-
-# 10 RAND
-
-![right fit](../images/10rand.png)
-
-```
-def slantLine(x, y, size):
-  if random.random() < 0.5:
-    line(
-      x-size/2, y-size/2,
-      x+size/2, y+size/2)
-  else:
-    line(
-      x-size/2, y+size/2,
-      x+size/2, y-size/2)
-
-draw_grid(slantLine, 4)
-```
----
-
-# 10 RAND
-
-![right fit](../images/10rand-8.png)
-
-```
-draw_grid(slantLine, 8)
-```
-
----
-
-# 10 RAND
-
-![right fit](../images/10rand-16.png)
-
-```
-draw_grid(slantLine, 16)
-```
-
 ---
 
 # Hypnotic Circles
