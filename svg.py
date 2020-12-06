@@ -16,6 +16,19 @@ class Node:
         self.children.append(n)
         return n
 
+    def apply(self, func):
+        """Applies a function to this node and
+        all the children recursively.
+        """
+        func(self)
+        for n in self.children:
+            n.apply(func)
+
+    def clone(self):
+        node = Node(self.tag, **self.attrs)
+        node.children = [n.clone() for n in self.children]
+        return node
+
     def __call__(self, *nodes):
         """Syntactic sugar for adding child nodes."""
         for n in nodes:

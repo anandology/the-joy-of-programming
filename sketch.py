@@ -8,6 +8,7 @@ class Sketch:
         self.height = height
         self.svg = SVG(viewBox=f"0 0 {width} {height}", style="stroke: black; fill: none;")
         self.background("white")
+        self.tcount = 0
 
     def background(self, color):
         self.svg.rect(x=0, y=0,
@@ -36,6 +37,21 @@ class Sketch:
             self.svg.add_node(g)
         else:
             self.svg.add_node(node)
+
+    def transform(self, node, dx, dy, sx, sy):
+        g = Node("g", transform=f"translate({dx}, {dy}) scale({sx}, {sy})")
+        g.add_node(node)
+        return g
+
+    def thumbnail(self, shape):
+        size = 260/4
+        x = self.tcount * (size+20) + 20
+        y = 10
+        self.show(self.transform(shape, x, y, 0.25, 0.25))
+        self.tcount += 1
+
+    def clear():
+        self.tcount = 0
 
     def tostring(self):
         return self.svg.tostring()
@@ -66,6 +82,7 @@ class Sketch:
 
             "Node": Node,
             "show": self.show,
+            "thumbnail": self.thumbnail,
 
             **g.exports
         }

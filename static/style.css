@@ -14,22 +14,17 @@ div.section {
 
 div.heading {
     padding: 5px 10px;
-    background: #eee;
+    background: #ddd;
+    height: 45px;
+    border: 1px solid #ccc;
 }
 
-div#code-box {
-    margin: 5px;
-    min-height: 800px;
-    max-height: 800px;
-}
-
-/* textarea {
-    width: 100%;
-    min-height: 600px;
-    padding: 5px;
+div.heading h2 {
     font-size: 1.2em;
-    font-family: 'Monaco', 'Courier New', Courier, monospace;
-} */
+    text-transform: uppercase;
+    padding-top: 5px;
+    color: #444;
+}
 
 svg {
     margin: 10px;
@@ -42,9 +37,17 @@ svg {
     font-size: 2em;
 }
 .CodeMirror-scroll {
-    max-height: 800px;
+    height: 770px;
 }
 .CodeMirror pre {
     padding-left: 7px;
     line-height: 1.25;
+}
+
+.x-col {
+    float: left;
+    width: 50%;
+    height: 890px;
+    background: #ddd;
+    border: 1px solid #aaa;
 }

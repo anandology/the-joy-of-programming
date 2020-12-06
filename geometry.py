@@ -67,6 +67,13 @@ def quartlet(p, q, r, s):
         beside(p, q),
         beside(r, s))
 
+def highlight(node, color='blue'):
+    def update(n):
+        n.attrs['style'] = f'fill: {color}; stroke: {color};'
+    node = node.clone()
+    node.apply(update)
+    return node
+
 def make_path(size, points):
     points = [(x*size, y*size) for (x, y) in points]
     d = "M {} {} ".format(*points[0])
@@ -77,7 +84,7 @@ def make_path(size, points):
 def get_fish(border=False, fill="black", stroke="black"):
     node = Node("path",
         d=open("fish.path").read().strip(),
-        style=f"fill: {fill}; stroke={stroke};")
+        style=f"fill: {fill}; stroke: {stroke};")
     if border:
         b = Node(
             'rect',
@@ -94,6 +101,14 @@ def get_python(fill="black", stroke="black"):
         d=open("python.path").read().strip(),
         style=f"fill: {fill}; stroke: {stroke};")
 
+def border(shape):
+    b = Node(
+        'rect',
+        x=0, y=0,
+        width=260, height=260,
+        stroke_dasharray="5,5",
+        stroke="#888")
+    return over(shape, b)
 
 F = make_path(260, [
     (.2, .1),
@@ -130,5 +145,8 @@ exports = {
     "get_fish": get_fish,
     "get_python": get_python,
     "F": F,
-    "blank": blank
+    "blank": blank,
+
+    "highlight": highlight,
+    "border": border,
 }
