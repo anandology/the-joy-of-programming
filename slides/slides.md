@@ -53,7 +53,7 @@ section.gallery {
 
 # The Joy of Programming
 ## Anand Chitipothu
-
+### _PyConf Hyderabad 2020_
 ---
 <!-- class: lead  -->
 
@@ -150,7 +150,42 @@ _Peter Henderson_
 
 ---
 
+# Challenge for You!
+
+![height:500px](images/python-limit3.png)
+
+---
+
+# Summary
+
+- Composing simple ideas
+
+---
+
+# References
+
+* [Functional Geometry - Peter Henderson][funcgeo2]
+* [Functional Geometry (in Julia) - Shashi Gowda][shashi]
+* [Structure and Interpretation of Computer Programs (The Wizard Book)][sicp]
+* [Gödel, Escher, Bach: an Eternal Golden Braid - Douglas Hofstadter][geb]
+* [M. C. Escher -- Wikipedia](https://en.wikipedia.org/wiki/M._C._Escher)
+
+[sicp]: https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book.html
+[geb]: https://en.wikipedia.org/wiki/G%C3%B6del,_Escher,_Bach
+[shashi]: http://shashi.biz/ijulia-notebooks/funcgeo/
+[funcgeo2]: https://eprints.soton.ac.uk/257577/1/funcgeo2.pdf
+
+---
+
+# Credits
+
+- The Fish image - Shashi Gowda
+
+---
+
 ## Thanks!
 
 Anand Chitipothu
 @anandology
+
+https://github.com/anandology/the-joy-of-programming

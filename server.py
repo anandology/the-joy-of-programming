@@ -38,9 +38,14 @@ class render:
     def POST(self, name):
         code = web.data().decode('utf-8')
         write_file(name, code)
-        s = Sketch()
-        s.render(code)
-        return s.tostring()
+        try:
+            s = Sketch()
+            s.render(code)
+            return s.tostring()
+        except Exception as e:
+            web.ctx.status = "403 Bad Input"
+            web.header("content-type", "text/plain")
+            return str(e)
 
 if __name__ == "__main__":
     app.run()

@@ -79,6 +79,9 @@
         $.post(url, code, function(data) {
           console.log(data);
           $("#preview-body").html(data);
+        }).fail(function(res) {
+          console.log("ERROR:", res.responseText);
+          $("#preview-body").html('<div class="alert alert-danger">' + res.responseText + '</div>');
         })
       }
 
